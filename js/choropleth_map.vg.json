@@ -105,7 +105,7 @@
                     }
                 }
             ],
-            "mark": {"type": "text", "color":"white", "align":"center", "fontSize": 12, "fontWeight":"bold"},
+            "mark": {"type": "text", "color":"black", "align":"center", "fontSize": 16, "fontWeight":700},
             "encoding": {
                 "latitude": {"field": "latitude", "type": "quantitative"},
                 "longitude": {"field": "longitude", "type": "quantitative"},
