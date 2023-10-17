@@ -3,7 +3,7 @@
     "width": "container",
     "height": 400,
     "data": {
-      "url": "data/world_population_merged.csv"
+      "url": "https://raw.githubusercontent.com/arma0002/FIT3179_Assignment2/main/data/world_population_merged.csv"
     },
     "params": [
         {

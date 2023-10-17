@@ -3,7 +3,7 @@
     "width": "container",
     "height": 500, 
     "data": {
-        "url": "data/ne_110m_admin_0_countries.topojson",
+        "url": "https://raw.githubusercontent.com/arma0002/FIT3179_Assignment2/main/data/WorldMapWithGraticules.topojson",
         "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
     },
     "projection": {"type":"equalEarth"},
@@ -35,7 +35,7 @@
 
         {
             "data": {
-                "url": "data/oceans.topojson",
+                "url": "https://raw.githubusercontent.com/arma0002/FIT3179_Assignment2/main/data/oceans.topojson",
                 "format": {"type": "topojson", "feature": "oceans"}
             },
             "mark": {"type": "geoshape", "fill": "skyblue"} 
@@ -43,7 +43,7 @@
 
         {
             "data": {
-                "url": "data/WorldMapWithGraticules.topojson",
+                "url": "https://raw.githubusercontent.com/arma0002/FIT3179_Assignment2/main/data/WorldMapWithGraticules.topojson",
                 "format": {"type": "topojson", "feature": "ne_110m_graticules_30"}
             },
             "mark": {"type": "geoshape", "fill":null, "stroke":"white"}
@@ -66,7 +66,7 @@
                     "lookup": "properties.NAME",
                     "from": {
                         "data": {
-                            "url": "data/world_population_merged.csv"
+                            "url": "https://raw.githubusercontent.com/arma0002/FIT3179_Assignment2/main/data/world_population_merged.csv"
                         },
                         "key": "Country/Territory",
                         "fields": ["Population_2023"]
@@ -98,7 +98,7 @@
                     "lookup": "properties.NAME",
                     "from": {
                         "data": {
-                            "url": "data/countryInfo.csv"
+                            "url": "https://raw.githubusercontent.com/arma0002/FIT3179_Assignment2/main/data/countryInfo.csv"
                         },
                         "key": "name",
                         "fields": ["latitude", "longitude"]
