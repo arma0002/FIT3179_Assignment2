@@ -1,0 +1,46 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": "container",
+    "height": 350,
+    "data": {
+      "url": "data/world_population_merged.csv"
+    },
+    "transform": [
+        {"filter": "datum.Rank > 2 && datum.Rank <= 12"}
+    ],
+    "params": [
+        {
+            "name": "highlight",
+            "select":
+            {
+                "type": "point",
+                "on": "mouseover"
+            }
+        },
+        {"name": "select", "select": "point"}
+    ],
+    "mark": {
+        "type": "arc", 
+        "stroke":"white",
+        "innerRadius": 30
+    },
+    "encoding": {
+        "theta": {"field": "World_Population_Percentage", "type": "quantitative", "stack": true},
+        "radius": {"field": "World_Population_Percentage", "scale": {"type": "sqrt", "zero": true}},
+        "color": {"field": "Country/Territory", "type": "nominal"},
+        "tooltip": [
+            {"field": "Country/Territory", "type": "nominal"},
+            {"field": "World_Population_Percentage", "type": "quantitative", "title": "% of World Population "},
+            {"field": "Population_2023", "type": "quantitative", "title": "Population ","format": ",.0f"}
+        ]
+    },
+    "config": {
+        "view": {"stroke": "transparent"},
+        "legend": {
+            "offset": -10,
+            "titleFontSize": 16,
+            "labelFontSize": 14
+        },
+        "background": "#eee9e3"
+    }
+}

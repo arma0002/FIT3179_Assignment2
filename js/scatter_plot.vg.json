@@ -1,0 +1,84 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": "container",
+    "height": 400,
+    "data": {
+      "url": "data/world_population_merged.csv"
+    },
+    "params": [
+        {
+            "name": "Continent_selection",
+            "bind": {
+                "input": "select",
+                "options": [null, "Africa", "Asia", "Europe", "North America", "Oceania", "South America"],
+                "labels": ["Show All", "Africa", "Asia", "Europe", "North America", "Oceania", "South America"],
+                "name": "Select Continent:"
+            }
+        }
+    ],
+    "transform": [
+        {"filter": "Continent_selection == null || datum.Continent == Continent_selection"},
+        {"filter": "datum.Population_2023 < 150000000"},
+        {"filter": "datum.Area <= 2000000"}
+    ],
+    "encoding": {
+        "x": {
+            "field": "Population_2023",
+            "type": "quantitative",
+            "title": "Population Count"
+        },
+        "y": {
+            "field": "Area",
+            "type": "quantitative",
+            "title": "Total Area (km2)"
+        }
+    },
+    "layer": [
+        {
+            "params": [
+                {
+                    "name": "highlight",
+                    "select":
+                    {
+                        "type": "point",
+                        "on": "mouseover"
+                    }
+                },
+                {"name": "select", "select": "point"}
+            ],
+            "mark": {
+                "type": "circle",
+                "size": 100
+            },
+            "encoding": {
+                "color": {
+                    "field": "Continent",
+                    "type": "nominal",
+                    "scale": {
+                        "range": ["#cc8400", "#354585", "#cc0000", "#9090ff", "#103d4b", "#00cc00"]
+                    }
+                },
+                "fillOpacity":{
+                    "condition": {"param": "select", "value":1},
+                    "value": 0.3
+                },
+                "opacity": {"value": 0.7},
+                "tooltip":[
+                    {"field": "Country/Territory", "type": "nominal"},
+                    {"field": "Continent", "type": "nominal"},
+                    {"field": "Area", "type": "quantitative", "title": "Area (in km2)"},
+                    {"field": "Population_2023", "type": "quantitative", "title": "2023 Population"},
+                    {"field": "Density", "type": "quantitative", "title": "Population Density per km2"}
+                ]
+            }
+        }
+    ],
+    "config": {
+        "view": {"stroke": "transparent"},
+        "legend": {
+            "titleFontSize": 16,
+            "labelFontSize": 14
+        },
+        "background": "#eee9e3"
+    }
+}

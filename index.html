@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FIT3179 Data Visualization 2</title>
+    <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+    <!-- Import pure.css -->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Georgia:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <!-- CSS file -->
+    <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+</head>
+
+<body>
+
+    <div class="page">
+
+        <!-- pure grid group for Title -->
+        <div class="pure-g">
+            <div class="pure-u-1-1">
+                <h1>World Population</h1>
+                <p> Welcome to the world of population visualization! Currently the world has <b> more than 8 billion people living on this planet!</b> 
+                    In this visualization, we explore the population data of various countries and territories, shedding light on the diverse 
+                    demographics and growth trends that shape our world.</p>
+            </div>
+        </div>
+        <!-- end pure grid group -->
+
+
+        <!-- pure grid group for Map-->
+        <div class="pure-g">
+            <div class="pure-u-1-1">
+                <h2> Population Distribution Accross The World</h2>
+                <div id="choropleth_map" class="vis-container"></div>
+                <p>As you navigate this map, you'll notice that <b>each color</b> on the map represents a different population range. The <b>darker</b>
+                    shades indicate areas with higher population concentrations, while <i>lighter</i> shades signify sparser populations. This visual 
+                    representation allows you to quickly grasp the disparities in population distribution across the world. The interactive slider 
+                    also allows you to look at countries that have a population beyond certain threshold.</p>
+            </div>
+        </div>
+        <!-- end pure grid group -->
+
+        <!-- pure grid group for Donut and Adv. Pie-->
+        <div class="pure-g">
+            <div class="pure-u-1-2">
+                <h2>Population Distribution by Continent</h2>
+                <div id="donut_chart" class="vis-container"></div>
+                <p>This vibrant donut chart illuminates the population distribution by <b>continent</b>, offering a macroscopic view of our planet's demographic 
+                    arrangement. Dominating the chart, <b>Asia's</b> segment is significantly pronounced, accounting for nearly <b>60%</b> of the entire global 
+                    population across <b>50 countries.</b></p>
+            </div>
+            <div class="pure-u-1-2">
+                <h2>Top 10 Populated Countries</h2>
+                <div id="advanced_pie_chart" class="vis-container"></div>
+                <p>With a focus beyond the populous giants of <i>India and China</i>, this colorful donut chart spotlights the top 10 most populated countries 
+                    worldwide. Nations such as the <b>United States, Indonesia, and Pakistan</b> emerge with significant slices, showcasing their considerable 
+                    demographic heft.</p>
+            </div>
+        </div>
+
+        <!-- pure grid group for Box Chart-->
+        <div class="pure-g">
+            <div class="pure-u-1-1">
+                <h2> Top 10 Largest Countries</h2>
+                <div id="bar_chart" class="vis-container"></div>
+                <p>The bar chart presented illustrates the landmass area of the <b>Top 10</b> largest countries in 
+                    terms of land area. Each horizontal bar represents a country, with the length of the bar 
+                    corresponding to its total landmass area in square kilometers. <b>Russia</b>, at the top, 
+                    boasts the most expansive landmass. Using the <b>selector</b> above, lets you see more or less countries.</p>
+            </div>
+        </div>
+        <!-- end pure grid group -->
+
+        <!-- pure grid group for Scatterplot-->
+        <div class="pure-g">
+            <div class="pure-u-1-1">
+                <h2>Comparison of Countries by Area and Population </h2>
+                <div id="scatter_plot" class="vis-container"></div>
+                <p>The provided <b>scatter plot</b> offers a comparative visualization of countries based on two 
+                    key metrics: the total <b>land area</b> (in square kilometers) on the y-axis and the 
+                    <b>population count</b> on the x-axis. Each dot on the chart represents a specific country, 
+                    with its position determined by these two factors.</p>
+            </div>
+        </div>
+        <!-- end pure grid group -->
+
+        <!-- pure grid group for smalltext-->
+        <div class="pure-g">
+            <div class="pure-u-1-1 small-font">
+                <p>© Made for FIT3179 Data Visualization 2 by arma0002</p>
+            </div>
+        </div>
+        <!-- end pure grid group -->
+
+    </div>
+
+    <script type="text/javascript">
+
+        var specVis1 = "js/choropleth_map.vg.json";
+
+        vegaEmbed("#choropleth_map", specVis1, {"actions":false}).then(function(result) {
+        }).catch(console.error);
+
+        var specVis2 = "js/donut_chart.vg.json";
+
+        vegaEmbed("#donut_chart", specVis2, {"actions":false}).then(function(result) {
+        }).catch(console.error);
+
+        var specVis3 = "js/scatter_plot.vg.json";
+
+        vegaEmbed("#scatter_plot", specVis3, {"actions":false}).then(function(result) {
+        }).catch(console.error);
+
+        var specVis4 = "js/bar_chart.vg.json";
+
+        vegaEmbed("#bar_chart", specVis4, {"actions":false}).then(function(result) {
+        }).catch(console.error);
+
+        var specVis5 = "js/advanced_pie_chart.vg.json";
+
+        vegaEmbed("#advanced_pie_chart", specVis5, {"actions":false}).then(function(result) {
+        }).catch(console.error);
+
+    </script>
+
+</body>
+
+</html>

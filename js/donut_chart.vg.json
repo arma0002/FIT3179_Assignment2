@@ -1,0 +1,62 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": "container",
+    "height": 350, 
+    "data": {
+        "url": "data/world_population_merged.csv"
+    },
+    "transform": [
+        {
+            "aggregate": [
+                {"op": "sum", "field": "Population_2023", "as": "Total Population"},
+                {"op": "count", "field": "Population_2023", "as": "Number"},
+                {"op": "average", "field": "Population_2023", "as": "Average"},
+                {"op": "sum", "field": "World_Population_Percentage", "as": "Sum%"}
+            ],
+            "groupby": ["Continent"]
+        }
+    ],
+
+    "params": [
+        {
+            "name": "highlight",
+            "select":
+            {
+                "type": "point",
+                "on": "mouseover"
+            }
+        },
+        {"name": "select", "select": "point"}
+    ],
+    "mark": {"type": "arc", "innerRadius": 60, "stroke":"aqua"},
+    "encoding": {
+        "theta": {"field": "Total Population", "type": "quantitative"},
+        "color": {
+            "field": "Continent",
+            "type": "nominal",
+            "scale": {
+                "range": ["#cc8400", "#354585", "#cc0000", "#9090ff", "#103d4b", "#00cc00"]
+            }
+        },
+        "fillOpacity":{
+            "condition": {"param": "select", "value":1},
+            "value": 0.3
+        },
+
+        "tooltip":[
+            {"field": "Continent", "type": "nominal", "title": "Continent "},
+            {"field": "Total Population", "type": "quantitative", "format":","},
+            {"field": "Number", "type": "quantitative", "title": "Number of Countries "},
+            {"field": "Average", "type": "quantitative", "title": "Average Population ", "format":",.0f"},
+            {"field": "Sum%", "type": "quantitative", "title": "World Population (in %)"}]
+    },
+    "config": {
+        "view": {"stroke": "transparent"},
+        "legend": {
+            "offset": -10,
+            "titleFontSize": 16,
+            "labelFontSize": 14
+        },
+        "background": "#eee9e3"
+    }
+}
